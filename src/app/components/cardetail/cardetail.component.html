@@ -1,0 +1,22 @@
+<h4 style="text-align: center">Car Details</h4>
+
+<table class="table">
+  <thead class="table-light">
+    <tr>
+      <td scope="col">Brand</td>
+      <td scope="col">Color</td>
+      <td scope="col">Model Year</td>
+      <td scope="col">Daily Price</td>
+      <td scope="col">Description</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let carDetail of carDetails">
+      <td scope="col">{{ carDetail.brandName }}</td>
+      <td scope="col">{{ carDetail.colorName }}</td>
+      <td scope="col">{{ carDetail.modelYear }}</td>
+      <td scope="col">{{ carDetail.dailyPrice }}</td>
+      <td scope="col">{{ carDetail.description }}</td>
+    </tr>
+  </tbody>
+</table>
