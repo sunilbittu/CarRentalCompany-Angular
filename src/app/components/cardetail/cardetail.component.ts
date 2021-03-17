@@ -14,7 +14,6 @@ import { CarimageService } from 'src/app/services/carimage.service';
 })
 export class CardetailComponent implements OnInit {
   carImagePaths: CarImage[] = [];
-  result = {} as ListResponseModel<CarDetail>
   carDetail:CarDetail;
   imageUrl = "https://localhost:44388/";
 
@@ -34,8 +33,6 @@ export class CardetailComponent implements OnInit {
   getCarDetailsByCarId(carId:number){
     this.carService.getCarDetailsByCarId(carId).subscribe((response) => {
       this.carDetail = response.data[0];
-      
-      
     })
   }
 
