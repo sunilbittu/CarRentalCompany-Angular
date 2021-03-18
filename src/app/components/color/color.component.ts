@@ -16,7 +16,7 @@ export class ColorComponent implements OnInit {
   constructor(private colorService:ColorService,private router:Router,private brandService:BrandService) {
     this.brandService.statusUpdated.subscribe(
       ()=>{
-        console.log("color içerisi çalıştı");
+        this.currentColor={colorID:0,colorName:""};
       }
     )
    }
@@ -42,8 +42,5 @@ export class ColorComponent implements OnInit {
   doFilter(color:Color){
     this.currentColor = color;
     this.router.navigate([''],{queryParams:{colorId:color.colorID},queryParamsHandling:"merge"});
-  }
-  resetColor(){
-    this.currentColor={colorID:0,colorName:""};
   }
 }

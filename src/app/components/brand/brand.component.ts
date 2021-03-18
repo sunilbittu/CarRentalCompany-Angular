@@ -40,7 +40,9 @@ export class BrandComponent implements OnInit {
       this.carDetails = response.data;
     });
     this.currentBrand={brandID:0,brandName:""}
-    this.brandService.statusUpdated.emit();
+    // aşağıda yapılmak istenen, All Cars a tıklandığında, menüdeki seçili öğelerin aktivasyonu durdurulur.(mavi olarak seçili kalmasını engeller.)
+    console.log("tetiklenme işlemi gerçekleşiyor.");
+    this.brandService.statusUpdated.emit(); // componentler arasında iletişim kurmayı sağlar. Bu metot tetiklendiğinde, color component in constructor ı  içerisindeki metot tetiklenir. böylelikle iki component arasında iletişim kurulmuş olur.
   }
 
   setCurrentBrand(brand: Brand) {
