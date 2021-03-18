@@ -6,8 +6,8 @@ import { CarsComponent } from './components/cars/cars.component';
 const routes: Routes = [
   {path:'' , pathMatch:'full', component:CarsComponent},
   {path:'cars', component:CarsComponent},
-  {path:'cars/brand/:brandId', component:CarsComponent},
-  {path:'cars/color/:colorId', component:CarsComponent},
+  // {path:'cars/brand/:brandId', component:CarsComponent},
+  // {path:'cars/color/:colorId', component:CarsComponent},
   {path:'cars/detail/:carId', component:CardetailComponent},
   {path:'detail/:carId', component:CardetailComponent}
 

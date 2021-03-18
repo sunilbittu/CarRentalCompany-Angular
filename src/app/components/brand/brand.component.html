@@ -12,10 +12,9 @@
   </div>
   <li class="list-group-item disabled" aria-disabled="true"><h5>Brands</h5></li>
   <li
-    (click)="setCurrentBrand(brand)"
+    (click)="doFilter(brand)"
     [class]="getCurrentBrandClass(brand)"
     *ngFor="let brand of brands"
-    routerLink="cars/brand/{{ brand.brandID }}"
   >
     <h6>{{ brand.brandName }}</h6>
   </li>

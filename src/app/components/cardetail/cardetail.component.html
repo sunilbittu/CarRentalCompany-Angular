@@ -40,15 +40,12 @@
   </div>
   
   <div class="card-body">
-    <h5 class="card-title">{{result.data.brandName}}</h5> 
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </p>
+    <h5 class="card-title"> {{carDetail.brandName}}  ||  {{carDetail.brandModel}}</h5> 
+    <p class="card-text">{{carDetail.description}}</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
+    <li class="list-group-item"><b>Color   :</b> {{carDetail.colorName}}</li>
+    <li class="list-group-item"><b>Model Year   :</b>  {{carDetail.modelYear}}</li>
+    <li class="list-group-item"><b>Daily Price   :</b>  {{carDetail.dailyPrice}} ₺</li>
   </ul>
 </div>

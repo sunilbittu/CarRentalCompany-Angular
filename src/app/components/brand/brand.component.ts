@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
 import { CarDetail } from 'src/app/models/carDetail';
 import { BrandService } from 'src/app/services/brand.service';
@@ -18,7 +18,8 @@ export class BrandComponent implements OnInit {
 
   constructor(
     private brandService: BrandService,
-    private carService: CarService
+    private carService: CarService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +39,8 @@ export class BrandComponent implements OnInit {
     this.carService.getCarDetails().subscribe((response) => {
       this.carDetails = response.data;
     });
+    this.currentBrand={brandID:0,brandName:""}
+    this.brandService.statusUpdated.emit();
   }
 
   setCurrentBrand(brand: Brand) {
@@ -50,6 +53,10 @@ export class BrandComponent implements OnInit {
     } else {
       return 'list-group-item';
     }
+  }
+  doFilter(brand:Brand){
+    this.currentBrand = brand;
+    this.router.navigate([''],{queryParams:{brandId:brand.brandID},queryParamsHandling:"merge"});
   }
 
   
