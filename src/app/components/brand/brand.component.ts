@@ -41,7 +41,6 @@ export class BrandComponent implements OnInit {
     });
     this.currentBrand={brandID:0,brandName:""}
     // aşağıda yapılmak istenen, All Cars a tıklandığında, menüdeki seçili öğelerin aktivasyonu durdurulur.(mavi olarak seçili kalmasını engeller.)
-    console.log("tetiklenme işlemi gerçekleşiyor.");
     this.brandService.statusUpdated.emit(); // componentler arasında iletişim kurmayı sağlar. Bu metot tetiklendiğinde, color component in constructor ı  içerisindeki metot tetiklenir. böylelikle iki component arasında iletişim kurulmuş olur.
   }
 
@@ -51,11 +50,14 @@ export class BrandComponent implements OnInit {
 
   getCurrentBrandClass(brand: Brand) {
     if (brand == this.currentBrand) {
-      return 'list-group-item active';
+      return 'list-group-item collapse active';
     } else {
-      return 'list-group-item';
+      return 'list-group-item collapse';
     }
+
+    
   }
+  
   doFilter(brand:Brand){
     this.currentBrand = brand;
     this.router.navigate([''],{queryParams:{brandId:brand.brandID},queryParamsHandling:"merge"});

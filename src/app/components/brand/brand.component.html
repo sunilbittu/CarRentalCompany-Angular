@@ -10,8 +10,19 @@
       <h5>All Cars</h5>
     </li>
   </div>
-  <li class="list-group-item disabled" aria-disabled="true"><h5>Brands</h5></li>
+  <li class="list-group-item bg-white" aria-disabled="true">
+    <div
+      class="btn w-100 text-start"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseExample"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      <h5>Brands</h5>
+    </div>
+  </li>
   <li
+    id="collapseExample"
     (click)="doFilter(brand)"
     [class]="getCurrentBrandClass(brand)"
     *ngFor="let brand of brands"
