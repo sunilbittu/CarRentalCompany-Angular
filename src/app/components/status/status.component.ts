@@ -24,9 +24,9 @@ export class StatusComponent implements OnInit {
 
   getCurrentStatuClass(statu: any) {
     if (this.currentStatu == statu) {
-      return 'list-group-item collapse active';
+      return 'btn list-group-item collapse active text-start';
     } else {
-      return 'list-group-item collapse';
+      return 'btn list-group-item collapse text-start';
     }
   }
 

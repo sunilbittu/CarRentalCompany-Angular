@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-navi',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  constructor() { }
+  filterText= this.carService.filterText;
+
+  constructor(private carService:CarService) { }
 
   ngOnInit(): void {
+    
   }
 
 }

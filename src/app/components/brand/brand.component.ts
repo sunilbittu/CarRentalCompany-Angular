@@ -50,9 +50,9 @@ export class BrandComponent implements OnInit {
 
   getCurrentBrandClass(brand: Brand) {
     if (brand == this.currentBrand) {
-      return 'list-group-item collapse active';
+      return 'btn list-group-item collapse active text-start';
     } else {
-      return 'list-group-item collapse';
+      return 'btn list-group-item collapse text-start';
     }
 
     

@@ -10,6 +10,7 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarsComponent implements OnInit {
   carDetails: CarDetail[] = [];
+  filterText='';
   dataLoaded = false;
 
   constructor(
@@ -18,21 +19,17 @@ export class CarsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.activatedRoute.queryParams.subscribe((params) => {
-      this.getCarWithFilter(
-        params['brandId'],
-        params['colorId'],
-        params['statuId']
-      );
+      this.getCarWithFilter(params['brandId'],params['colorId'],params['statuId']);
     });
+    
   }
+  
 
   getCarWithFilter(brandId?: number, colorId?: number, status?: number) {
-    this.carService
-      .getCarWithFilter(brandId, colorId, status)
-      .subscribe((response) => {
+    this.carService.getCarWithFilter(brandId, colorId, status).subscribe((response) => {
         this.carDetails = response.data;
-        console.log(response);
       });
   }
 

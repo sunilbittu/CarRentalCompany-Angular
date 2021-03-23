@@ -12,6 +12,7 @@ export class BrandService {
 
   apiUrl=environment.apiUrl;
   statusUpdated = new EventEmitter();
+  
   constructor(private httpClient:HttpClient) { }
 
   getBrands(): Observable<ListResponseModel<Brand>>{

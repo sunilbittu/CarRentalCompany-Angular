@@ -13,15 +13,18 @@ export class ColorComponent implements OnInit {
   colors: Color[] = [];
   currentColor: Color;
   dataLoaded = false;
+
   constructor(
     private colorService: ColorService,
     private router: Router,
     private brandService: BrandService
   ) {
+    
     this.brandService.statusUpdated.subscribe(() => {
       this.currentColor = { colorID: 0, colorName: '' };
     });
   }
+
 
   ngOnInit(): void {
     this.getColors();
@@ -36,17 +39,14 @@ export class ColorComponent implements OnInit {
 
   getCurrentColorClass(color: Color) {
     if (this.currentColor == color) {
-      return 'list-group-item collapse active';
+      return 'btn list-group-item collapse active text-start';
     } else {
-      return 'list-group-item collapse';
+      return 'btn list-group-item collapse text-start';
     }
   }
 
   doFilter(color: Color) {
     this.currentColor = color;
-    this.router.navigate([''], {
-      queryParams: { colorId: color.colorID },
-      queryParamsHandling: 'merge',
-    });
+    this.router.navigate([''], {queryParams: { colorId: color.colorID }, queryParamsHandling: 'merge',});
   }
 }

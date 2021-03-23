@@ -9,13 +9,7 @@ import { ListResponseModel } from '../models/listReponseModel';
   providedIn: 'root'
 })
 export class CarDetailService {
-
   
-
   constructor() { }
-
-  
-
-
 
 }

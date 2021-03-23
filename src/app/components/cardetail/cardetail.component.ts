@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
 import { ListResponseModel } from 'src/app/models/listReponseModel';
+import { CarFilterPipe } from 'src/app/pipes/car-filter.pipe';
 import { CarService } from 'src/app/services/car.service';
 import { CarDetailService } from 'src/app/services/cardetail.service';
 import { CarimageService } from 'src/app/services/carimage.service';

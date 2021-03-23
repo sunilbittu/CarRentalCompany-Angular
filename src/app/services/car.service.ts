@@ -10,25 +10,17 @@ import { ListResponseModel } from '../models/listReponseModel';
 })
 export class CarService {
   apiUrl = environment.apiUrl;
+  filterText='sddsd';
 
   constructor(private httpClient: HttpClient) {}
 
-  getCarWithFilter(
-    brandId?: number,
-    colorId?: number,
-    status?: number
-  ): Observable<ListResponseModel<CarDetail>> {
+  getCarWithFilter(brandId?: number,colorId?: number,status?: number): Observable<ListResponseModel<CarDetail>> {
+
     let newPath = this.apiUrl + 'cars/GetWithFilter?';
 
-    if (brandId !== undefined) {
-      newPath += 'brandId=' + brandId + '&';
-    }
-    if (colorId !== undefined) {
-      newPath += 'colorId=' + colorId + '&';
-    }
-    if (status !== undefined) {
-      newPath += 'status=' + status + '&';
-    }
+    if (brandId !== undefined) { newPath += 'brandId=' + brandId + '&';}
+    if (colorId !== undefined) {newPath += 'colorId=' + colorId + '&';}
+    if (status !== undefined) {newPath += 'status=' + status + '&';}
 
     return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
   }
@@ -48,9 +40,7 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
   }
 
-  getCarDetailsByCarId(
-    carId: number
-  ): Observable<ListResponseModel<CarDetail>> {
+  getCarDetailsByCarId(carId: number): Observable<ListResponseModel<CarDetail>> {
     let newPath = this.apiUrl + 'cars/getcardetailsbycar?carId=' + carId;
     return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
   }
