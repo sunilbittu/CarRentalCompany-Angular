@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listReponseModel';
 import { Brand } from '../models/brand';
+import {ResponseModel} from '../models/ResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class BrandService {
 
   apiUrl=environment.apiUrl;
   statusUpdated = new EventEmitter();
-  
+
   constructor(private httpClient:HttpClient) { }
 
   getBrands(): Observable<ListResponseModel<Brand>>{
@@ -20,6 +21,23 @@ export class BrandService {
     return this.httpClient.get<ListResponseModel<Brand>>(newPath);
     }
 
-  
+
+
+
+  addBrand(brand:Brand): Observable<ResponseModel>{
+    let newPath = this.apiUrl + 'brands/add';
+    return this.httpClient.post<ResponseModel>(newPath, brand);
+  }
+
+  deleteBrand(brand:Brand): Observable<ResponseModel>{
+    let newPath = this.apiUrl + 'brands/delete';
+    return this.httpClient.post<ResponseModel>(newPath, brand);
+  }
+
+
+  updateBrand(brand:Brand): Observable<ResponseModel>{
+    let newPath = this.apiUrl + 'brands/update';
+    return this.httpClient.post<ResponseModel>(newPath, brand);
+  }
 
 }

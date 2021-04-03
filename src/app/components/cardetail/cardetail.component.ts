@@ -7,6 +7,7 @@ import { CarFilterPipe } from 'src/app/pipes/car-filter.pipe';
 import { CarService } from 'src/app/services/car.service';
 import { CarDetailService } from 'src/app/services/cardetail.service';
 import { CarimageService } from 'src/app/services/carimage.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-cardetail',
@@ -19,7 +20,7 @@ export class CardetailComponent implements OnInit {
   imageUrl = "https://localhost:44388/";
 
 
-  constructor(private carImageService: CarimageService, private activatedRoute: ActivatedRoute, private carService:CarService) {}
+  constructor(private carImageService: CarimageService, private activatedRoute: ActivatedRoute, private carService:CarService, private authService:AuthService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -28,6 +29,7 @@ export class CardetailComponent implements OnInit {
         this.getCarDetailsByCarId(params['carId'])
       }
     })
+    this.isAdmin()
   }
 
 
@@ -41,5 +43,10 @@ export class CardetailComponent implements OnInit {
     this.carImageService.getCarImagesByCar(carId).subscribe((response) => {
       this.carImagePaths = response.data
     });
+  }
+
+
+  isAdmin(){
+    return this.authService.isAdmin()
   }
 }

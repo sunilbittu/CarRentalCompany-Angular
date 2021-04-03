@@ -23,9 +23,8 @@ export class CarrentaldetailComponent implements OnInit {
   returnDate: Date;
   state:number = 1;
 
-  firstDateSelected:boolean= false;
-  minDate:string;
-  maxDate:string;
+  firstDateSelected:boolean= false; // rentDate seçili değilse, returnDate aktif olmayacak.
+  minDate:string; // eğer rentDate seçildiyse, returnDate i minimum o tarihe çekecek.
 
   constructor(
     private carRentalDetailService : CarRentalDetailService,
@@ -67,13 +66,11 @@ export class CarrentaldetailComponent implements OnInit {
       returnDate: this.returnDate,
     };
 
-
-
     this.paymentService.setRental(rental);
     this.toastrService.success('Your rental request has been received. You are redirected to the payment page.');
 
       this.state =2;
- 
+
   }
 
 

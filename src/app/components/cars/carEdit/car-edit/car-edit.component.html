@@ -1,0 +1,51 @@
+<div class="w-75 m-auto my-5">
+  <form [formGroup]="editCarForm" *ngIf="car">
+    <div class="row">
+      <div class="mb-3 col-md-6">
+        <label for="brandID">Brand Id</label>
+        <div class="form-group">
+          <select class="form-select" formControlName="brandID" id='brandID'>
+            <option [ngValue]='brand.brandID' *ngFor="let brand of brands"> {{brand.brandName}} </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-6">
+        <label for="colorID">Color Id</label>
+        <div class="form-group">
+          <select class="form-select" formControlName="colorID" id='colorID'>
+            <option [ngValue]='color.colorID' *ngFor="let color of colors"> {{color.colorName}} </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mb-3 col-md-6">
+        <label for="dailyPrice">Daily Price</label>
+        <div class="form-group">
+          <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control w-100">
+        </div>
+      </div>
+      <div class="mb-3 col-md-6">
+        <label for="modelYear">Model Year</label>
+        <div class="form-group">
+          <input type="number" id="modelYear" formControlName="modelYear" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mb-3 col">
+        <label for="description">Description</label>
+        <div class="form-group">
+          <input type="text" id="description" formControlName="description" class="form-control w-100">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button (click)="edit()" class="btn btn-success  m-auto w-50 ">Edit</button>
+    </div>
+
+  </form>
+</div>

@@ -18,6 +18,17 @@ import { StatusComponent } from './components/status/status.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { PaymentComponent } from './components/payment/payment.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import {JwtModule} from '@auth0/angular-jwt';
+import { BrandEditComponent } from './components/brand/brandEdit/brand-edit/brand-edit.component';
+import { CarEditComponent } from './components/cars/carEdit/car-edit/car-edit.component';
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
+
 
 @NgModule({
   declarations: [
@@ -32,6 +43,11 @@ import { PaymentComponent } from './components/payment/payment.component';
     StatusComponent,
     CarFilterPipe,
     PaymentComponent,
+    AdminPanelComponent,
+    LoginComponent,
+    RegisterComponent,
+    BrandEditComponent,
+    CarEditComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +55,13 @@ import { PaymentComponent } from './components/payment/payment.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["http://localhost:4200/"]
+        //disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),

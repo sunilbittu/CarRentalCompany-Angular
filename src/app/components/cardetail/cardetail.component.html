@@ -39,9 +39,54 @@
     </li>
   </ul>
 </div>
+
+
+
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-start mt-3" *ngIf="isAdmin()">
+  <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal" data-bs-target="#edit" >
+    Edit This Car
+  </button>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <!-- ortada kalmasını istemiyorsan modal-dialog-centered kaldır -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editLabel">Edit This Car</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+
+      <app-car-edit [car]="carDetail"></app-car-edit>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <app-carrentaldetail></app-carrentaldetail> -->
 
-<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+<div class="d-grid gap-2 d-md-flex justify-content-md-end" *ngIf="!isAdmin()">
   <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
     Rent This Car
   </button>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from 'src/app/services/car.service';
+import {AuthService} from '../../services/auth.service';
+import {User} from '../../models/user';
+import {LocalStorageService} from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-navi',
@@ -8,12 +11,31 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class NaviComponent implements OnInit {
 
-  filterText= this.carService.filterText;
+  userInfo : User = this.authService.getUser();
 
-  constructor(private carService:CarService) { }
+  constructor(private authService:AuthService, private localStorageService : LocalStorageService) { }
 
   ngOnInit(): void {
-    
   }
+
+
+  isAuthenticated(){
+    return this.authService.loggedIn()
+  }
+
+
+  logout(){
+    this.localStorageService.removeToken()
+  }
+
+
+  ngDoCheck(){ // eğer userInfo içeriği user içeriğine eşit değilse onu eşitle
+    if(this.userInfo !== this.authService.user){
+      this.userInfo =this.authService.user
+    }
+
+  }
+
+
 
 }
