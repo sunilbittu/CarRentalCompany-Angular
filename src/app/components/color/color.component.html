@@ -7,16 +7,14 @@
       aria-expanded="false"
       aria-controls="collapseExample"
     >
-      <h5>Colors</h5>
+      <h5>Colors
+        <div class=" float-end" *ngIf="isAdmin()" >
+          <button type="button"class="btn btn-outline-secondary" (click)="goToEdit()"> Edit </button>
+        </div>
+      </h5>
     </div>
   </li>
-  <li
-    id="color"
-    (click)="doFilter(color)"
-    routerLinkActive="active"
-    [class]="getCurrentColorClass(color)"
-    *ngFor="let color of colors"
-  >
+  <li id="color" (click)="doFilter(color)" routerLinkActive="active" [class]="getCurrentColorClass(color)" *ngFor="let color of colors" >
     <h6>{{ color.colorName }}</h6>
   </li>
 </ul>

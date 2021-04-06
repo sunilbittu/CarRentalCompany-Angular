@@ -41,7 +41,7 @@ export class BrandComponent implements OnInit {
     this.carService.getCarDetails().subscribe((response) => {
       this.carDetails = response.data;
     });
-    this.currentBrand={brandID:0,brandName:""}
+    this.currentBrand={brandID:0,brandName:"", brandModel:""}
     // aşağıda yapılmak istenen, All Cars a tıklandığında, menüdeki seçili öğelerin aktivasyonu durdurulur.(mavi olarak seçili kalmasını engeller.)
     this.brandService.statusUpdated.emit(); // componentler arasında iletişim kurmayı sağlar. Bu metot tetiklendiğinde, color component in constructor ı  içerisindeki metot tetiklenir. böylelikle iki component arasında iletişim kurulmuş olur.
   }
@@ -72,5 +72,9 @@ export class BrandComponent implements OnInit {
 
   goToEdit(){
     this.router.navigate(['brandEdit'])
+  }
+
+  isAdmin(){
+    return this.authService.isAdmin()
   }
 }

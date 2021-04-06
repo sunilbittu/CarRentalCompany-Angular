@@ -18,12 +18,14 @@ import { StatusComponent } from './components/status/status.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { PaymentComponent } from './components/payment/payment.component';
-import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import { BrandEditComponent } from './components/brand/brandEdit/brand-edit/brand-edit.component';
 import { CarEditComponent } from './components/cars/carEdit/car-edit/car-edit.component';
+import { ColorEditComponent } from './components/color/colorEdit/color-edit/color-edit.component';
+import { AdminEditComponent } from './components/admin-edit/admin-edit.component';
+import { CarAddComponent } from './components/cars/carAdd/car-add/car-add.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -43,11 +45,13 @@ export function tokenGetter() {
     StatusComponent,
     CarFilterPipe,
     PaymentComponent,
-    AdminPanelComponent,
     LoginComponent,
     RegisterComponent,
     BrandEditComponent,
-    CarEditComponent
+    CarEditComponent,
+    ColorEditComponent,
+    AdminEditComponent,
+    CarAddComponent
   ],
   imports: [
     BrowserModule,

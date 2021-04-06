@@ -15,6 +15,7 @@ export class BrandEditComponent implements OnInit {
 
   brands:Brand[]=[];
   brandId:number;
+  brand:Brand;
   brandDeleteForm:FormGroup;
   brandAddForm:FormGroup;
   brandUpdateForm:FormGroup;
@@ -46,7 +47,8 @@ export class BrandEditComponent implements OnInit {
   createBrandUpdateForm(){
     this.brandUpdateForm= this.formBuilder.group({
       brandId : ['', Validators.required],
-      brandName:['', Validators.required]
+      brandName:['', Validators.required],
+      brandModel:['', Validators.required]
     })
   }
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { ColorService } from 'src/app/services/color.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-color',
@@ -17,9 +18,10 @@ export class ColorComponent implements OnInit {
   constructor(
     private colorService: ColorService,
     private router: Router,
-    private brandService: BrandService
+    private brandService: BrandService,
+    private authService:AuthService
   ) {
-    
+
     this.brandService.statusUpdated.subscribe(() => {
       this.currentColor = { colorID: 0, colorName: '' };
     });
@@ -48,5 +50,17 @@ export class ColorComponent implements OnInit {
   doFilter(color: Color) {
     this.currentColor = color;
     this.router.navigate([''], {queryParams: { colorId: color.colorID }, queryParamsHandling: 'merge',});
+  }
+
+  isAuthenticated(){
+    return this.authService.loggedIn()
+  }
+
+  goToEdit(){
+    this.router.navigate(['colorEdit'])
+  }
+
+  isAdmin(){
+    return this.authService.isAdmin()
   }
 }

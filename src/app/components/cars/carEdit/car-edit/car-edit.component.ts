@@ -76,8 +76,6 @@ export class CarEditComponent implements OnInit {
         this.toastrService.error(error)
         }
       )
-
-
     }else{
       this.toastrService.error('Form invalid.')
     }

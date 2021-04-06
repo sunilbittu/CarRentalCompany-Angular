@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CarService } from 'src/app/services/car.service';
+import {Component, OnInit} from '@angular/core';
+import {CarService} from 'src/app/services/car.service';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../models/user';
 import {LocalStorageService} from '../../services/local-storage.service';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-navi',
@@ -11,31 +13,35 @@ import {LocalStorageService} from '../../services/local-storage.service';
 })
 export class NaviComponent implements OnInit {
 
-  userInfo : User = this.authService.getUser();
+  userInfo: User = this.authService.getUser();
 
-  constructor(private authService:AuthService, private localStorageService : LocalStorageService) { }
+  constructor(private authService: AuthService, private localStorageService: LocalStorageService, private router: Router, private toastrService:ToastrService) {
+  }
 
   ngOnInit(): void {
   }
 
 
-  isAuthenticated(){
-    return this.authService.loggedIn()
+  isAuthenticated() {
+    return this.authService.loggedIn();
   }
 
 
-  logout(){
-    this.localStorageService.removeToken()
+  logout() {
+    this.localStorageService.removeToken();
+    this.toastrService.success('Logged Out.')
   }
 
 
-  ngDoCheck(){ // eğer userInfo içeriği user içeriğine eşit değilse onu eşitle
-    if(this.userInfo !== this.authService.user){
-      this.userInfo =this.authService.user
+  ngDoCheck() { // eğer userInfo içeriği user içeriğine eşit değilse onu eşitle
+    if (this.userInfo !== this.authService.user) {
+      this.userInfo = this.authService.user;
     }
 
   }
 
-
+  goToAdminEdit() {
+    this.router.navigate(['adminEdit']);
+  }
 
 }

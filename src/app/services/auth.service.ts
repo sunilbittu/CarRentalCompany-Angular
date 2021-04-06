@@ -83,12 +83,13 @@ export class AuthService {
 
   isAdmin() {
     let isAdmin = false
-    this.user.roles?.map(role => {
-      if(role.toLocaleLowerCase().indexOf("admin") !== -1){
-        isAdmin= true;
-      }
-    })
-   return isAdmin;
+    if (this.loggedIn()) {
+      this.user.roles?.map(role => {
+        if (role.toLocaleLowerCase().indexOf("admin") !== -1) {
+          isAdmin = true;
+        }
+      })
+    }
+    return isAdmin;
   }
-
 }

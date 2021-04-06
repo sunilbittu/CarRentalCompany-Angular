@@ -53,15 +53,15 @@ export class CarService {
     return this.httpClient.post<ResponseModel>(newPath, car);
   }
 
-  deleteCar(car:CarDetail): Observable<ResponseModel>{
-    let newPath = this.apiUrl + 'cars/delete';
-    return this.httpClient.post<ResponseModel>(newPath, car);
-  }
-
 
   updateCar(car:CarDetail): Observable<ResponseModel>{
     let newPath = this.apiUrl + 'cars/update';
     return this.httpClient.post<ResponseModel>(newPath, car);
+  }
+
+  deleteCar(car:CarDetail): Observable<ResponseModel>{
+    let newPath = this.apiUrl + 'cars/delete';
+    return this.httpClient.post<ResponseModel>(newPath,car);
   }
 
   // getCarsByColorAndBrand(

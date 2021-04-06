@@ -1,17 +1,19 @@
 <div class="card" style="width: 100%; margin-top: 20px">
-  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" >
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item" *ngFor="let carImage of carImagePaths; index as i; first as firstImage" [ngClass]="{ active: firstImage }" >
+      <div class="carousel-item" *ngFor="let carImage of carImagePaths; index as i; first as firstImage"
+           [ngClass]="{ active: firstImage }">
         <!-- diziye gelen ilk elemaı firstImage atar. Daha sonra, ngClass normal class ın içerisine karşısında yazan boolean değer true ysa active komutu ekliyor. -->
-        <img [src]="imageUrl + carImage.imagePath" class="d-block w-100" alt="..." style="height: 400px; width: 700px; object-fit: cover" />
+        <img [src]="imageUrl + carImage.imagePath" class="d-block w-100" alt="..."
+             style="height: 400px; width: 700px; object-fit: cover"/>
       </div>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" >
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
 
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" >
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -40,24 +42,37 @@
   </ul>
 </div>
 
+<div class="row float-start mt-3" *ngIf="isAdmin()">
+  <div class="col-md-2 mx-2">
+    <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal" data-bs-target="#add">
+      Add
+    </button>
+  </div>
 
+  <div class="col-md-2 mx-2">
+    <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal" data-bs-target="#edit">
+      Edit
+    </button>
+  </div>
 
-
-<div class="d-grid gap-2 d-md-flex justify-content-md-start mt-3" *ngIf="isAdmin()">
-  <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal" data-bs-target="#edit" >
-    Edit This Car
-  </button>
+  <div class=" col-md-2 mx-2">
+    <button type="button" class="btn btn-dark text-center btn-lg me-md-2" (click)="deleteCar()">
+      Delete
+    </button>
+  </div>
 </div>
 
-<!-- Modal -->
+
+<!-- Modals -->
 <div
-  class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+  class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <!-- ortada kalmasını istemiyorsan modal-dialog-centered kaldır -->
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="editLabel">Edit This Car</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <app-car-edit [car]="carDetail"></app-car-edit>
@@ -66,41 +81,42 @@
 </div>
 
 
+<div
+  class="modal fade" id="add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <!-- ortada kalmasını istemiyorsan modal-dialog-centered kaldır -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addLabel">Add New Car</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <app-car-add></app-car-add>
+    </div>
+  </div>
+</div>
 
 
 <!-- <app-carrentaldetail></app-carrentaldetail> -->
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end" *ngIf="!isAdmin()">
-  <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+  <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop" [disabled]="carDetail?.isRentable !== true">
     Rent This Car
   </button>
 </div>
 
 <!-- Modal -->
 <div
-  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <!-- ortada kalmasını istemiyorsan modal-dialog-centered kaldır -->
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Rent This Car</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <app-carrentaldetail [car]="carDetail"></app-carrentaldetail>

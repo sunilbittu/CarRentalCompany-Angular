@@ -48,7 +48,7 @@
               <div class="mb-3 col-md-6">
                 <label for="brandID">Brand Name</label>
                 <div class="form-group">
-                  <select class="form-select" aria-label="Default select example" name="brandName" formControlName="brandId" [(ngModel)]="brandId">
+                  <select class="form-select" id="brandID" aria-label="Default select example" name="brandName" formControlName="brandId" [(ngModel)]="brandId">
                     <option [ngValue]='brand.brandID' *ngFor="let brand of brands"> {{brand.brandName}} </option>
                   </select>
                 </div>
@@ -62,42 +62,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- <div class="row">
-
-    <div class="col-md-6">
-      <label for="addBrandName"> Brand Name: </label>
-      <input type="text" id="addBrandName" class="form-control" formControlName="brandName" placeholder="Brand Name" aria-label="addBrandName" aria-describedby="basic-addon2">
-    </div>
-
-    <div class="col-md-6">
-      <label for="addBrandModel"> Brand Model: </label>
-      <input type="text" id="addBrandModel" class="form-control" formControlName="brandModel" placeholder="Brand Model" aria-label="addBrandModel" aria-describedby="basic-addon2">
-    </div>
-
-  </div> -->
-
 
 
   <div class="accordion-item">
@@ -114,36 +78,18 @@
           <div class="row mt-3">
 
             <div class="col-md-6">
-<!--              <label for="brandId"></label>-->
-<!--              <input type="text" id="brandId" class="form-control" aria-label="brandId"-->
-<!--                     aria-describedby="basic-addon2" formControlName="brandId">-->
               <label> Choose the one to update.. </label>
               <div class="form-group">
                 <select class="form-select" aria-label="Default select example" name="brandName" formControlName="brandId" [(ngModel)]="brandId">
-                  <option [ngValue]='brand.brandID' *ngFor="let brand of brands"> {{brand.brandName}} </option>
+                  <option [ngValue]='brand.brandID' *ngFor="let brand of brands"> {{brand.brandName}}  ~  {{brand.brandModel}} </option>
                 </select>
               </div>
             </div>
 
             <div class="col-md-6">
-<!--              <label for="brandName"></label>-->
-<!--              <input type="text" id="brandName" class="form-control" aria-label="brandName"-->
-<!--                     aria-describedby="basic-addon2" formControlName="brandName">-->
               <label for="updateBrandName"> Brand Name: </label>
               <input type="text" id="updateBrandName" class="form-control" formControlName="brandName" placeholder="Brand Name" aria-label="updateBrandName" aria-describedby="basic-addon2">
             </div>
-<!--            <div class="col-md-4">-->
-
-
-<!--              <label for="brandModel"></label>-->
-<!--              <input type="text" id="brandModel" class="form-control" aria-label="brandModel"-->
-<!--                     aria-describedby="basic-addon2" formControlName="brandModel"-->
-<!--                     >-->
-<!--            </div>-->
-
-<!--            <div class="col-md-4">-->
-<!--              <button (click)="updateBrand()" class="btn btn-secondary btn-lg"> Update </button>-->
-<!--            </div>-->
             <div class="row justify-content-center align-items-center mt-3">
               <div class="mb-3 col-md-6">
                 <div class="form-group">
@@ -155,10 +101,7 @@
                 <button (click)="updateBrand()" class="btn btn-secondary  m-auto w-50 "> Update </button>
               </div>
             </div>
-
-
           </div>
-
           </div>
         </form>
       </div>
