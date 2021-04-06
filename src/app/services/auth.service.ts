@@ -84,7 +84,11 @@ export class AuthService {
   isAdmin() {
     let isAdmin = false
     if (this.loggedIn()) {
-      this.user.roles?.map(role => {
+      let claims = this.user.roles?.toString().split(',') // string bir dizi olarak döndürüldüğü için, tek bir claim olduğunda object olarak dönüyor ve bu sebeple cast edemiyor. 
+      //Haliyle isAdmin() metodu çalışmıyor. Map te hata veriyor. bu sebeple önce gelen objeyi tamamen string e çevirip varsa virgüllerden ayırıp yeni bir dizi oluşturarak onu
+     // geziyoruz.
+     
+      claims?.map(role => {
         if (role.toLocaleLowerCase().indexOf("admin") !== -1) {
           isAdmin = true;
         }

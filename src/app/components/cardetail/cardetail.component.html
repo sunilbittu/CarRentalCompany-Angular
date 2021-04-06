@@ -102,7 +102,7 @@
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end" *ngIf="!isAdmin()">
   <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop" [disabled]="carDetail?.isRentable !== true">
+          data-bs-target="#staticBackdrop" [disabled]="carDetail?.isRentable !== true" *ngIf="isAuthenticated()">
     Rent This Car
   </button>
 </div>

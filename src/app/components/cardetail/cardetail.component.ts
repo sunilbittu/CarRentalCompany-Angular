@@ -77,4 +77,8 @@ export class CardetailComponent implements OnInit {
   }
 
 
+  isAuthenticated(){
+    return this.authService.loggedIn();
+  }
+
 }

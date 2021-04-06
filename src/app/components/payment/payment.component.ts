@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -7,6 +7,7 @@ import {
   SelectControlValueAccessor,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CustomerDetail } from 'src/app/models/customerDetail';
 import { Payment } from 'src/app/models/payment';
 import { CarRentalDetailService } from 'src/app/services/carrentaldetail.service';
 import { PaymentService } from 'src/app/services/payment.service';
@@ -23,6 +24,7 @@ export class PaymentComponent implements OnInit {
   years:number[]=[2022,2023,2024,2025,2026,2027,2028,2029,2030]
   selectedYear:number; */
 
+  @Input() customer:number;
   paymentAddForm: FormGroup;
   payment: Payment;
 
@@ -35,10 +37,12 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.createPaymentAddForm();
+    
   }
 
   createPaymentAddForm() {
     this.paymentAddForm = this.formBuilder.group({
+      customerId : [this.customer],
       nameOnTheCard: ['', Validators.required],
       cardNumber: ['', Validators.required],
       dateMonth: ['', Validators.required],
@@ -49,6 +53,7 @@ export class PaymentComponent implements OnInit {
 
   addPayment() {
     if (this.paymentAddForm.valid) {
+      this.paymentAddForm.value.cvvCode = Number(this.paymentAddForm.value.cvvCode)
       let paymentModel = Object.assign({}, this.paymentAddForm.value);
       this.paymentService.addRentalAfterPayment(paymentModel);
     } else {
