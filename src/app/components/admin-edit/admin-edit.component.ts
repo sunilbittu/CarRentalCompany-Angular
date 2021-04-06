@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-edit',
@@ -14,7 +17,8 @@ export class AdminEditComponent implements OnInit {
   userInfoEditForm: FormGroup;
   changePasswordForm:FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private userService:UserService, private toastrService:ToastrService,
+              private router : Router) {
   }
 
   ngOnInit(): void {
@@ -48,5 +52,35 @@ export class AdminEditComponent implements OnInit {
   }
 
 
+  updateUserInfos(){
+    if (this.userInfoEditForm.valid){
+      let userInfosModel = Object.assign({}, this.userInfoEditForm.value);
+      this.userService.updateUserInfos(userInfosModel).subscribe(response=>{
+        this.toastrService.success(response.message, 'User Information Updated.')
+        this.authService.logOut();
+        this.router.navigate(['/login'])
+      }, responseError => {
+        this.toastrService.error(responseError.errors, 'User Information Is Not Updated.')
+      })
+    }else{
+      this.toastrService.error('Form Invalid.')
+    }
+
+  }
+
+  updateUserPassword(){
+    if (this.changePasswordForm.valid){
+      let userPasswordModel= Object.assign({}, this.changePasswordForm.value);
+      this.userService.changeUserPassword(userPasswordModel).subscribe(response=>{
+        this.toastrService.success(response.message, 'Password Changed.')
+        this.authService.logOut();
+        this.router.navigate(['/login'])
+      }, responseError=>{
+        this.toastrService.error(responseError.errors, 'Password Not Changed.')
+      })
+    }else{
+      this.toastrService.error('Form Invalid.')
+    }
+  }
 
 }

@@ -92,4 +92,11 @@ export class AuthService {
     }
     return isAdmin;
   }
+
+  logOut(){
+    this.localStorageService.removeToken();
+  }
+
+
+
 }

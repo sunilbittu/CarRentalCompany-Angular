@@ -18,7 +18,7 @@
       <label for="lastName">Last Name</label>
     </div>
 
-    <button class="w-75 btn btn-lg btn-secondary mt-3" type="submit" > Save </button>
+    <button class="w-75 btn btn-lg btn-secondary mt-3" type="submit" (click)="updateUserInfos()"> Save </button>
 <!--    <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="register()" [disabled]="!registerForm.valid">Sign Up</button>-->
 
   </form>
@@ -42,7 +42,7 @@
           <label for="newPassword">New Password</label>
         </div>
 
-    <button class="w-75 btn btn-lg btn-secondary mt-3" type="submit" > Reset </button>
+    <button class="w-75 btn btn-lg btn-secondary mt-3" type="submit" (click)="updateUserPassword()"> Change </button>
     <!--    <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="register()" [disabled]="!registerForm.valid">Sign Up</button>-->
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
