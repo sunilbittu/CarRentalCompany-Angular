@@ -56,11 +56,14 @@ export class CardetailComponent implements OnInit {
 
 
   deleteCar(){
-    this.carService.deleteCar(this.carDetail).subscribe(response=>{
-      this.toastrService.success('Car Deleted.')
-    }, responseError=>{
-      this.toastrService.error('Car Not Deleted.')
-    })
+    if (window.confirm("Are you sure?")){
+      this.carService.deleteCar(this.carDetail).subscribe(response=>{
+
+        this.toastrService.success('Car Deleted.')
+      }, responseError=>{
+        this.toastrService.error('Car Not Deleted.')
+      })
+    }
   }
 
 

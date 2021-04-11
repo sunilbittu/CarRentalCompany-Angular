@@ -5,6 +5,7 @@ import { CarDetail } from 'src/app/models/carDetail';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import {AuthService} from '../../services/auth.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-brand',
@@ -21,7 +22,8 @@ export class BrandComponent implements OnInit {
     private brandService: BrandService,
     private carService: CarService,
     private router:Router,
-    private authService:AuthService
+    private authService:AuthService,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -47,12 +49,12 @@ export class BrandComponent implements OnInit {
   }
 
   setCurrentBrand(brand: Brand) {
-    this.currentBrand = brand;
+    this.brandService.setCurrentBrand(brand);
   }
 
   getCurrentBrandClass(brand: Brand) {
     if (brand == this.currentBrand) {
-      return 'btn list-group-item collapse active text-start';
+      return 'btn list-group-item list-group-item-dark collapse text-start';
     } else {
       return 'btn list-group-item collapse text-start';
     }
@@ -66,6 +68,22 @@ export class BrandComponent implements OnInit {
   }
 
 
+
+  deleteBrand(brand:Brand){
+    if(window.confirm("Are you sure?")){
+      this.brandService.deleteBrand(brand).subscribe(response =>{
+        this.toastrService.success("Deleted.")
+        window.location.reload();
+      })
+    }
+    else{
+      this.toastrService.error("Not Deleted.")
+    }
+  }
+
+
+
+
   isAuthenticated(){
     return this.authService.loggedIn()
   }
@@ -77,4 +95,8 @@ export class BrandComponent implements OnInit {
   isAdmin(){
     return this.authService.isAdmin()
   }
+
+
+
+
 }

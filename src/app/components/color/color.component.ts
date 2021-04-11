@@ -4,6 +4,8 @@ import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { ColorService } from 'src/app/services/color.service';
 import {AuthService} from '../../services/auth.service';
+import {Brand} from '../../models/brand';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-color',
@@ -19,7 +21,8 @@ export class ColorComponent implements OnInit {
     private colorService: ColorService,
     private router: Router,
     private brandService: BrandService,
-    private authService:AuthService
+    private authService:AuthService,
+    private toastrService:ToastrService
   ) {
 
     this.brandService.statusUpdated.subscribe(() => {
@@ -39,13 +42,34 @@ export class ColorComponent implements OnInit {
     });
   }
 
+
+  setCurrentColor(color: Color) {
+    this.colorService.setCurrentColor(color);
+  }
+
+
   getCurrentColorClass(color: Color) {
     if (this.currentColor == color) {
-      return 'btn list-group-item collapse active text-start';
+      return 'btn list-group-item list-group-item-dark collapse text-start';
     } else {
       return 'btn list-group-item collapse text-start';
     }
   }
+
+
+  deleteColor(color:Color){
+    if(window.confirm("Are you sure?")){
+      this.colorService.deleteColor(color).subscribe(response =>{
+        this.toastrService.success("Deleted.")
+        window.location.reload();
+      })
+    }
+    else{
+      this.toastrService.error("Not Deleted.")
+    }
+  }
+
+
 
   doFilter(color: Color) {
     this.currentColor = color;
@@ -54,10 +78,6 @@ export class ColorComponent implements OnInit {
 
   isAuthenticated(){
     return this.authService.loggedIn()
-  }
-
-  goToEdit(){
-    this.router.navigate(['colorEdit'])
   }
 
   isAdmin(){

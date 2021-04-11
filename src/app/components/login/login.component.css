@@ -12,7 +12,7 @@ body {
 
 .form-signin {
   width: 100%;
-  max-width: 330px;
+  max-width: 450px;
   padding: 15px;
   margin: auto;
 }
@@ -36,3 +36,37 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+
+/*My Css Codes*/
+
+.loginButton{
+
+  color: #313f54;
+  background-color: #eceff3;
+  /*border-color: #bccad6;*/
+}
+
+.loginButton:hover {
+  color: #eceff3;
+  background-color: #313f54;
+  /*border-color: #bdc5ce;*/
+  padding: 0.4rem 1.5rem 0.4rem 1.5rem;
+}
+
+.fontInfo{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  color: #334b6f;
+}
+
+.fontInfoHeader{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 30px;
+  color: #334b6f;
+}
+
+.inputSize{
+  padding-top: 25px !important
+}
+

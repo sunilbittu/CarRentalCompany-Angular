@@ -9,6 +9,8 @@ import {RegisterModel} from '../models/registerModel';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {User} from '../models/user';
 import {LocalStorageService} from './local-storage.service';
+import {CustomerDetail} from '../models/customerDetail';
+import {CustomerDetailService} from './customerdetail.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,7 @@ export class AuthService {
   decodedTokenKey: any;
   token :string | null= ""
 
-  constructor(private httpClient: HttpClient, private jwtHelper: JwtHelperService, private  localStorageService: LocalStorageService) {
+  constructor(private httpClient: HttpClient, private jwtHelper: JwtHelperService, private  localStorageService: LocalStorageService, private customerService:CustomerDetailService) {
   }
 
 
@@ -63,8 +65,12 @@ export class AuthService {
           userName: userName,
           userId: userId,
           email: tokenInfoEmail,
-          roles: roles
+          roles: roles,
+          companyName :"",
+          customerId : 0
         };
+
+        this.getCustomerUserId(userId);
       }
     }
     return this.user;
@@ -84,10 +90,10 @@ export class AuthService {
   isAdmin() {
     let isAdmin = false
     if (this.loggedIn()) {
-      let claims = this.user.roles?.toString().split(',') // string bir dizi olarak döndürüldüğü için, tek bir claim olduğunda object olarak dönüyor ve bu sebeple cast edemiyor. 
+      let claims = this.user.roles?.toString().split(',') // string bir dizi olarak döndürüldüğü için, tek bir claim olduğunda object olarak dönüyor ve bu sebeple cast edemiyor.
       //Haliyle isAdmin() metodu çalışmıyor. Map te hata veriyor. bu sebeple önce gelen objeyi tamamen string e çevirip varsa virgüllerden ayırıp yeni bir dizi oluşturarak onu
      // geziyoruz.
-     
+
       claims?.map(role => {
         if (role.toLocaleLowerCase().indexOf("admin") !== -1) {
           isAdmin = true;
@@ -101,6 +107,13 @@ export class AuthService {
     this.localStorageService.removeToken();
   }
 
+
+  getCustomerUserId(userId : number){
+    this.customerService.getCustomerByUserId(userId).subscribe(response =>{
+      this.user.customerId = response.data.customerID
+      this.user.companyName = response.data.companyName;
+    })
+  }
 
 
 }

@@ -1,24 +1,25 @@
 <body class="text-center">
-<main class="form-signin">
+<main class="form-signin inputSize fontInfo">
   <form [formGroup]="userInfoEditForm">
-    <h1 class="h3 mb-4 fw-normal"> Edit Profile </h1>
+    <h1 class="h4 mb-4 fw-normal fontInfo"><h3> Edit Profile </h3></h1>
 
     <div class="form-floating mb-2">
-      <input type="email" formControlName="email" class="form-control" id="email" placeholder="name@example.com" readonly>
+      <input type="email" formControlName="email" class="form-control fontInfo" id="email" placeholder="name@example.com" readonly>
       <label for="email">Email address</label>
     </div>
 
     <div class="form-floating mb-2">
-      <input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="First Name">
+      <input type="text" formControlName="firstName" class="form-control fontInfo" id="firstName" placeholder="First Name">
       <label for="firstName">First Name</label>
     </div>
 
     <div class="form-floating mb-2">
-      <input type="text" formControlName="lastName" class="form-control" id="lastName" placeholder="Last Name">
+      <input type="text" formControlName="lastName" class="form-control fontInfo" id="lastName" placeholder="Last Name">
       <label for="lastName">Last Name</label>
     </div>
 
-    <button class="w-75 btn btn-lg btn-secondary mt-3" type="submit" (click)="updateUserInfos()"> Save </button>
+    <button class="w-75 btn mt-3 fontInfo userInfoEditButton" type="submit" (click)="updateUserInfos()">
+      <h5>Save </h5></button>
 <!--    <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="register()" [disabled]="!registerForm.valid">Sign Up</button>-->
 
   </form>
@@ -28,21 +29,21 @@
 
   <div class="content my-lg-5">
   <form [formGroup]="changePasswordForm">
-    <h1 class="h3 mb-4 fw-normal"> Reset Password </h1>
+    <h1 class="h1 mb-4 fw-normal fontInfo"><h3> Reset Password </h3></h1>
 
 
-        <div class="form-floating mb-2">
-          <input type="password" formControlName="oldPassword" class="form-control" id="oldPassword" placeholder="oldPassword">
+        <div class="form-floating mb-2 fontInfo">
+          <input type="password" formControlName="oldPassword" class="form-control inputSize" id="oldPassword" placeholder="oldPassword">
           <label for="oldPassword">Old Password</label>
         </div>
 
 
-        <div class="form-floating mb-2">
-          <input type="password" formControlName="newPassword" class="form-control" id="newPassword" placeholder="newPassword">
+        <div class="form-floating mb-2 fontInfo">
+          <input type="password" formControlName="newPassword" class="form-control inputSize" id="newPassword" placeholder="newPassword">
           <label for="newPassword">New Password</label>
         </div>
 
-    <button class="w-75 btn btn-lg btn-secondary mt-3" type="submit" (click)="updateUserPassword()"> Change </button>
+    <button class="w-75 btn mt-3 fontInfo userInfoEditButton" type="submit" (click)="updateUserPassword()"><h5> Change </h5></button>
     <!--    <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="register()" [disabled]="!registerForm.valid">Sign Up</button>-->
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>

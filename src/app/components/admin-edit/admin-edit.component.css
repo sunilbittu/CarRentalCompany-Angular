@@ -21,9 +21,9 @@ body {
   font-weight: 400;
 }
 
-.form-signin .form-floating:focus-within {
-  z-index: 2;
-}
+/*.form-signin .form-floating:focus-within {*/
+/*  z-index: 2;*/
+/*}*/
 
 .form-signin input[type="email"] {
   margin-bottom: -1px;
@@ -37,3 +37,34 @@ body {
   border-top-right-radius: 0;
 }
 
+
+/*My Css Codes*/
+
+.userInfoEditButton{
+
+  color: #313f54;
+  background-color: #eceff3;
+  /*border-color: #bccad6;*/
+}
+
+.userInfoEditButton:hover {
+  color: #eceff3;
+  background-color: #313f54;
+  /*border-color: #bdc5ce;*/
+  padding: 0.4rem 1.5rem 0.4rem 1.5rem;
+}
+
+.fontInfo{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 19px;
+  color: #334b6f;
+}
+
+.inputSize{
+  padding-top: 25px !important
+}
+
+
+/*.inputSize{*/
+/*  padding-top: 25px !important*/
+/*}*/

@@ -26,8 +26,7 @@ export class CarRentalDetailService {
   }
 
   addRental(rental: CarRental): Observable<ResponseModel> {
-    let newPath = this.apiUrl + 'add';
-    console.log(newPath);
+    let newPath = this.apiUrl + 'add'
     return this.httpClient.post<ResponseModel>(newPath, rental);
   }
 }

@@ -1,9 +1,7 @@
 export interface Payment{
-    paymentId:number;
-    customerId:number;
-    nameOnTheCard:string;
+    paymentId?:number;
+    customerId?:number;
     cardNumber:string;
-    dateMonth:number;
-    dateYear:number;
-    cvvCode:number;
+    totalAmount:number;
+
 }

@@ -7,6 +7,8 @@ import { CustomerDetail } from 'src/app/models/customerDetail';
 import { CarRentalDetailService } from 'src/app/services/carrentaldetail.service';
 import { CustomerDetailService } from 'src/app/services/customerdetail.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import {AuthService} from '../../services/auth.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-carrentaldetail',
@@ -21,15 +23,19 @@ export class CarrentaldetailComponent implements OnInit {
   customerId: number;
   rentDate: Date;
   returnDate: Date;
+  totalPrice:number;
+  minDate:string="";
+  // eğer rentDate seçildiyse, returnDate i minimum o tarihe çekecek.
   state:number = 1;
 
   firstDateSelected:boolean= false; // rentDate seçili değilse, returnDate aktif olmayacak.
-  minDate:string; // eğer rentDate seçildiyse, returnDate i minimum o tarihe çekecek.
+
 
   constructor(
     private carRentalDetailService : CarRentalDetailService,
     private customerDetailService:CustomerDetailService,
     private paymentService: PaymentService,
+    private authService : AuthService,
     private toastrService:ToastrService
 
   ) {}
@@ -40,6 +46,8 @@ export class CarrentaldetailComponent implements OnInit {
   ngOnInit(): void {
     this.getCarRentalDetails();
     this.getCustomerDetails();
+    this.minDate=new Date().toISOString().split("T")[0] // uzun bir tarih ve zaman bilgisi geldi onu split ile yalnızca tarih kısmını alacak şekilde böldük
+    this.rentDate = new Date(this.minDate); // rentDate Date türünde olduğu için, string ütründeki minDate i Date türüne çevirdik.
   }
 
 
@@ -59,9 +67,9 @@ export class CarrentaldetailComponent implements OnInit {
 
 
   addRentalCar() {
-    let rental: CarRental = {
+    let rental =<CarRental>{
       carId: this.car.carID,
-      customerId: this.customerId,
+      customerId: this.authService.user.customerId,
       rentDate: this.rentDate,
       returnDate: this.returnDate,
     };
@@ -84,6 +92,12 @@ export class CarrentaldetailComponent implements OnInit {
     if (this.returnDate < this.rentDate) {
       this.returnDate = this.rentDate
     }
+  }
+
+  totalAmount(date:any){
+    let differance = new Date(this.returnDate).getTime() - new Date(this.rentDate).getTime();
+    let amount = new Date(differance).getDate();
+    this.paymentService.totalPrice = amount * this.car.dailyPrice;
   }
 
 

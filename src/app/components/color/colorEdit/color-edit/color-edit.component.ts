@@ -17,36 +17,24 @@ export class ColorEditComponent implements OnInit {
   colors:Color[]=[];
   colorId:number;
   color:Color;
-  colorDeleteForm:FormGroup;
-  colorAddForm:FormGroup;
   colorUpdateForm:FormGroup;
 
   ngOnInit(): void {
-    this.createColorDeleteForm();
-    this.createColorAddForm();
     this.createColorUpdateForm();
     this.getColors()
   }
 
-
-
-  createColorAddForm(){
-    this.colorAddForm=this.formBuilder.group({
-      colorName:['', Validators.required]
-    })
-  }
-
-
-  createColorDeleteForm(){
-    this.colorDeleteForm= this.formBuilder.group({
-      colorId : ['', Validators.required]
-    })
+  ngDoCheck(){
+    if (this.color !== this.colorService.currentColor){
+      this.color = this.colorService.currentColor
+      this.colorUpdateForm.patchValue(this.color) // değer atamaya yardımcı olur
+    }
   }
 
 
   createColorUpdateForm(){
     this.colorUpdateForm= this.formBuilder.group({
-      colorId : ['', Validators.required],
+      colorID : ['', Validators.required],
       colorName:['', Validators.required]
     })
   }
@@ -60,43 +48,13 @@ export class ColorEditComponent implements OnInit {
 
 
 
-  addColor(){
-    if(this.colorAddForm.valid){
-      let colorModel = Object.assign({}, this.colorAddForm.value);
-      this.colorService.addBrand(colorModel).subscribe(response=>{
-        this.toastrService.success('Color Added')
-      })
-    }else{
-      this.toastrService.error('Form Invalid')
-    }
-  }
-
-
-
-
-
-  deleteColor(){
-    if(this.colorDeleteForm.valid){
-      let colorModel = Object.assign({}, this.colorDeleteForm.value);
-      this.colorService.deleteBrand(colorModel).subscribe(response => {
-        let deleted = this.colors.filter(x=>x.colorID == colorModel.brandID)
-        let index = this.colors.indexOf(deleted[0]);
-        this.colors.splice(index,1)
-        this.toastrService.success('Color Deleted')
-      })
-
-    }else{
-      this.toastrService.error('Form Invalid')
-    }
-  }
-
-
   updateColor(){
     if(this.colorUpdateForm.valid){
       let colorModel = Object.assign({}, this.colorUpdateForm.value);
-      this.colorService.updateBrand(colorModel).subscribe(response => {
+      this.colorService.updateColor(colorModel).subscribe(response => {
         console.log(colorModel)
         this.toastrService.success('Color Deleted')
+        window.location.reload();
       })
 
     }else{

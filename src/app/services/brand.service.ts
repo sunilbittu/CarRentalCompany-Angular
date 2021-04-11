@@ -13,6 +13,7 @@ export class BrandService {
 
   apiUrl=environment.apiUrl;
   statusUpdated = new EventEmitter();
+  currentBrand : Brand;
 
   constructor(private httpClient:HttpClient) { }
 
@@ -40,4 +41,7 @@ export class BrandService {
     return this.httpClient.post<ResponseModel>(newPath, brand);
   }
 
+  setCurrentBrand(brand: Brand){
+    this.currentBrand = brand;
+  }
 }

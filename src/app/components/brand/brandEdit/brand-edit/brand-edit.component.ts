@@ -14,90 +14,49 @@ export class BrandEditComponent implements OnInit {
   constructor(private brandService:BrandService, private formBuilder:FormBuilder, private toastrService:ToastrService) { }
 
   brands:Brand[]=[];
-  brandId:number;
   brand:Brand;
   brandDeleteForm:FormGroup;
-  brandAddForm:FormGroup;
   brandUpdateForm:FormGroup;
 
   ngOnInit(): void {
-    this.createBrandDeleteForm();
-    this.createBrandAddForm();
     this.createBrandUpdateForm();
-    this.getBrands()
+    this.createBrandDeleteForm();
   }
 
-
-
-  createBrandAddForm(){
-    this.brandAddForm=this.formBuilder.group({
-      brandName:['', Validators.required],
-      brandModel:['', Validators.required]
-    })
+  ngDoCheck(){
+    if (this.brand !== this.brandService.currentBrand){
+      this.brand = this.brandService.currentBrand
+      this.brandUpdateForm.patchValue(this.brand) // değer atamaya yardımcı olur
+    }
   }
 
 
   createBrandDeleteForm(){
     this.brandDeleteForm= this.formBuilder.group({
-      brandId : ['', Validators.required]
+      brandID : ['', Validators.required]
     })
   }
 
 
   createBrandUpdateForm(){
     this.brandUpdateForm= this.formBuilder.group({
-      brandId : ['', Validators.required],
+      brandID :['', Validators.required],
       brandName:['', Validators.required],
       brandModel:['', Validators.required]
     })
   }
 
 
-  getBrands(){
-    this.brandService.getBrands().subscribe(response=>{
-      this.brands = response.data
-    })
-  }
-
-
-
-  addBrand(){
-    if(this.brandAddForm.valid){
-      let brandModel = Object.assign({}, this.brandAddForm.value);
-      this.brandService.addBrand(brandModel).subscribe(response=>{
-        this.toastrService.success('Brand Added')
-      })
-    }else{
-      this.toastrService.error('Form Invalid')
-    }
-  }
-
-
-
-
-
-  deleteBrand(){
-    if(this.brandDeleteForm.valid){
-      let brandModel = Object.assign({}, this.brandDeleteForm.value);
-      this.brandService.deleteBrand(brandModel).subscribe(response => {
-        let deleted = this.brands.filter(x=>x.brandID == brandModel.brandID)
-        let index = this.brands.indexOf(deleted[0]);
-        this.brands.splice(index,1)
-        this.toastrService.success('Brand Deleted')
-      })
-
-    }else{
-      this.toastrService.error('Form Invalid')
-    }
-  }
 
 
   updateBrand(){
+    console.log(this.brandUpdateForm.value)
     if(this.brandUpdateForm.valid){
-      let brandModel = Object.assign({}, this.brandUpdateForm.value);
+      let brandModel = Object.assign({}, this.brandUpdateForm.value)
       this.brandService.updateBrand(brandModel).subscribe(response => {
         console.log(brandModel)
-        this.toastrService.success('Brand Deleted')
+        this.toastrService.success('Brand Updated')
+        window.location.reload();
       })
 
     }else{

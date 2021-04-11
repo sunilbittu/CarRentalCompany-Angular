@@ -3,4 +3,6 @@ export interface User{
   userName:string;
   email:string;
   roles?: string[];
+  companyName:string;
+  customerId:number;
 }

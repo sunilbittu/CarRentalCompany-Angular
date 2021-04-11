@@ -2,18 +2,18 @@
   <form [formGroup]="addCarForm">
     <div class="row">
       <div class="mb-3 col-md-6">
-        <label for="brandID">Brand Id</label>
+        <label for="brandID" class="fontInfo">Brand</label>
         <div class="form-group">
-          <select class="form-select" formControlName="brandID" id='brandID'>
+          <select class="form-select inputSize" formControlName="brandID" id='brandID'>
             <option [ngValue]='brand.brandID' *ngFor="let brand of brands"> {{brand.brandName}} </option>
           </select>
         </div>
       </div>
 
       <div class="mb-3 col-md-6">
-        <label for="colorID">Color Id</label>
+        <label for="colorID" class="fontInfo">Color</label>
         <div class="form-group">
-          <select class="form-select" formControlName="colorID" id='colorID'>
+          <select class="form-select inputSize" formControlName="colorID" id='colorID'>
             <option [ngValue]='color.colorID' *ngFor="let color of colors"> {{color.colorName}} </option>
           </select>
         </div>
@@ -22,29 +22,29 @@
 
     <div class="row">
       <div class="mb-3 col-md-6">
-        <label for="dailyPrice">Daily Price</label>
+        <label for="dailyPrice" class="fontInfo">Daily Price</label>
         <div class="form-group">
-          <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control w-100">
+          <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control fontInfo inputSize w-100">
         </div>
       </div>
       <div class="mb-3 col-md-6">
-        <label for="modelYear">Model Year</label>
+        <label for="modelYear" class="fontInfo">Model Year</label>
         <div class="form-group">
-          <input type="number" id="modelYear" formControlName="modelYear" class="form-control">
+          <input type="number" id="modelYear" formControlName="modelYear" class="form-control fontInfo inputSize">
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="mb-3 col">
-        <label for="description">Description</label>
+        <label for="description" class="fontInfo">Description</label>
         <div class="form-group">
-          <input type="text" id="description" formControlName="description" class="form-control w-100">
+          <input type="text" id="description" formControlName="description" class="form-control fontInfo inputSize w-100">
         </div>
       </div>
     </div>
     <div class="row">
-      <button (click)="addCar()" class="btn btn-success  m-auto w-50 ">Add</button>
+      <button (click)="addCar()" class="btn carAddButton fontInfo m-auto w-50 mt-3">Add</button>
     </div>
 
   </form>
