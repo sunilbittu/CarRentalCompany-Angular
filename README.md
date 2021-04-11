@@ -1,27 +1,44 @@
-# CarRentalCompany
+# Car Rental Company - Rent  A Car
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+This project is an online car rental project. 
 
-## Development server
+Introduction Video 
+video
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Tecnologies
+- Angular 11
+- TypeScript
+- Bootstrap
+- Jquery
+   
+### FrontendTechniques
+- Pipe
+- JWT
+- Service
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Images
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+##### Index Page - For User
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/indexpage%20-%20forUser.PNG" />
 
-## Running unit tests
+##### Index Page - For Admin
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/editCarPage%20-%20forAdmin.PNG" />
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+##### Rental Car Page - For User
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/rentalDetailsPage%20-%20forUser.PNG" />
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/paymentDetails%20-%20forUser.PNG" />
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/findexPoint%20-%20forUser.PNG" />
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+##### Car Administrator Page - For Admin
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/editCarPage%20-%20forAdmin.PNG" />
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/adminPanelPage%20-%20forAdmin.PNG" />
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/addColorPage%20-%20forAdmin.PNG" />
 
-## Further help
+##### User Operation Pages
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/signInPage.PNG" />
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/singUpPage.PNG" />
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/singUpPage.PNG" />
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
