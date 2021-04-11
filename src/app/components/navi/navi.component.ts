@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CarService} from 'src/app/services/car.service';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../models/user';
 import {LocalStorageService} from '../../services/local-storage.service';

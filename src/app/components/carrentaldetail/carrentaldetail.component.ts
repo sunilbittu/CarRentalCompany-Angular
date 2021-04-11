@@ -8,7 +8,6 @@ import { CarRentalDetailService } from 'src/app/services/carrentaldetail.service
 import { CustomerDetailService } from 'src/app/services/customerdetail.service';
 import { PaymentService } from 'src/app/services/payment.service';
 import {AuthService} from '../../services/auth.service';
-import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-carrentaldetail',

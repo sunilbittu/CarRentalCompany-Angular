@@ -1,13 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-  SelectControlValueAccessor,
-} from '@angular/forms';
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {CustomerDetail} from 'src/app/models/customerDetail';
 import {Payment} from 'src/app/models/payment';
 import {CarRentalDetailService} from 'src/app/services/carrentaldetail.service';
 import {PaymentService} from 'src/app/services/payment.service';

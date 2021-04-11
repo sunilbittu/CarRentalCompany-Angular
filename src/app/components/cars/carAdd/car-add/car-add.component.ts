@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CarDetail} from '../../../../models/carDetail';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BrandService} from '../../../../services/brand.service';
 import {ColorService} from '../../../../services/color.service';

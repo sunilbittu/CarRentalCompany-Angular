@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
-import {register} from 'ts-node';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {Router} from '@angular/router';

@@ -39,33 +39,4 @@ export class CarsComponent implements OnInit {
     return this.authService.isAdmin()
   }
 
-
-  // getCarDetails() {
-  //   this.carService.getCarDetails().subscribe((response) => {
-  //     this.carDetails = response.data;
-  //     this.dataLoaded = true;
-  //   });
-  // }
-
-  // getCarsByBrand(brandId: number) {
-  //   this.carService.getCarsByBrand(brandId).subscribe((response) => {
-  //     this.carDetails = response.data;
-  //     console.log(response.data);
-  //   });
-  // }
-
-  // getCarsByColor(colorId: number) {
-  //   this.carService.getCarsByColor(colorId).subscribe((response) => {
-  //     this.carDetails = response.data;
-  //     console.log(response.data);
-  //   });
-  // }
-
-  // getCarsByColorAndBrand(colorId: number, brandId: number) {
-  //   this.carService
-  //     .getCarsByColorAndBrand(colorId, brandId)
-  //     .subscribe((response) => {
-  //       this.carDetails = response.data;
-  //     });
-  // }
 }
