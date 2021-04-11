@@ -6,7 +6,8 @@
   <div *ngFor="let carDetail of carDetails | carFilter: filterText" class="card" style="width: 18rem">
     <div class="d-flex" style="height: 45%">
       <div class="carousel-item" *ngFor="let image of carDetails; index as i; first as firstImage" [ngClass]="{ active: firstImage }" >
-        <img src="https://localhost:44388/{{ carDetail.imagePath[0]}}" class="card-img-top" alt="" style="height: 100%; width: 100%; object-fit: cover" />
+<!--        <img src="https://localhost:44388/{{ carDetail.imagePath[0]}}" class="card-img-top" alt="" style="height: 100%; width: 100%; object-fit: cover" />-->
+        <img [src]="carDetail.imagePath.length !== 0 ? imageUrl+ carDetail.imagePath[0] : imageUrl + 'Images/unnamed.png'" class="card-img-top" alt="" style="height: 100%; width: 100%; object-fit: cover" />
       </div>
     </div>
 

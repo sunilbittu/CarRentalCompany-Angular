@@ -1,11 +1,13 @@
 <div class="card" style="width: 100%; margin-top: 20px">
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
+
+
+
       <div class="carousel-item" *ngFor="let carImage of carImagePaths; index as i; first as firstImage"
            [ngClass]="{ active: firstImage }">
         <!-- diziye gelen ilk elemaı firstImage atar. Daha sonra, ngClass normal class ın içerisine karşısında yazan boolean değer true ysa active komutu ekliyor. -->
-        <img [src]="imageUrl + carImage.imagePath" class="d-block w-100" alt="..."
-             style="height: 400px; width: 700px; object-fit: cover"/>
+        <img [src]="imageUrl+ carImage.imagePath" class="d-block w-100" alt="..." style="height: 400px; width: 700px; object-fit: cover"/>
       </div>
 
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">

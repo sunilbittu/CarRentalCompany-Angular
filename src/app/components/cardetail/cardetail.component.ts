@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
 import { ListResponseModel } from 'src/app/models/listReponseModel';
@@ -24,7 +24,7 @@ export class CardetailComponent implements OnInit {
 
 
   constructor(private carImageService: CarimageService, private activatedRoute: ActivatedRoute, private carService:CarService, private authService:AuthService,
-              private toastrService:ToastrService) {}
+              private toastrService:ToastrService, private router : Router) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -46,6 +46,7 @@ export class CardetailComponent implements OnInit {
   getImagesByCar(carId: number) {
     this.carImageService.getCarImagesByCar(carId).subscribe((response) => {
       this.carImagePaths = response.data
+      console.log(response.data)
     });
   }
 
@@ -60,6 +61,7 @@ export class CardetailComponent implements OnInit {
       this.carService.deleteCar(this.carDetail).subscribe(response=>{
 
         this.toastrService.success('Car Deleted.')
+        this.router.navigate(['/'])
       }, responseError=>{
         this.toastrService.error('Car Not Deleted.')
       })
