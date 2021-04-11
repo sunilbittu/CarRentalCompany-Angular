@@ -2,8 +2,6 @@
 
 This project is an online car rental project. 
 
-Introduction Video 
-video
 
 
 ### Tecnologies
