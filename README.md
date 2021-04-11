@@ -40,5 +40,5 @@ video
 ##### User Operation Pages
 <img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/signInPage.PNG" />
 <img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/singUpPage.PNG" />
-<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/singUpPage.PNG" />
+<img src="https://github.com/kubraterzi/CarRentalCompany-Angular/blob/master/ImagesForGithub/editProfile%20-%20forUser.PNG" />
 
